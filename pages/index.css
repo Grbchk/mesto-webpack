@@ -1,0 +1,22 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+/*Blocks*/
+@import url(../blocks/page/page.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/profile/profile.css);
+/*Elements*/
+@import url(../blocks/page/__header/page__header.css);
+@import url(../blocks/page/__profile/page__profile.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/profile/__photo/profile__photo.css);
+@import url(../blocks/profile/__user/profile__user.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__button-add/profile__button-add.css);
+@import url(../blocks/profile/__button-edit/profile__button-edit.css);
+/*Modifiers*/
+/*
+* {
+  outline: 1px solid white;
+}
+*/
