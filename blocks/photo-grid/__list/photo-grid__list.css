@@ -1,0 +1,8 @@
+.photo-grid__list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 17px;
+  list-style: none;
+}

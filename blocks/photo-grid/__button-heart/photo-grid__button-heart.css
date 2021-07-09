@@ -1,0 +1,11 @@
+.photo-grid__button-heart {
+  min-width: 22px;
+  min-height: 19px;
+  background: url(../../../images/heart-button.svg) no-repeat center center;
+  cursor: pointer;
+}
+
+.photo-grid__button-heart:hover {
+  opacity: 60%;
+}
+
