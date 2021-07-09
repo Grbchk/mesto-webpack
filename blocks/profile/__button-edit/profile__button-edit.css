@@ -7,6 +7,12 @@
   background: url(../../../images/edit-button.svg) no-repeat center center;
   margin-left: 18px;
   align-self: end;
+  cursor: pointer;
+}
+
+.profile__button-edit:hover {
+  opacity: 60%;
+  transition: opacity .7s;
 }
 
 @media screen and (max-width: 370px) {

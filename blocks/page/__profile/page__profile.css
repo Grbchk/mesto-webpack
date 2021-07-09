@@ -2,3 +2,27 @@
   margin: 0 auto;
   margin-top: 40px;
 }
+
+@media screen and (max-width: 910px) {
+  .page__profile {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .page__profile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .page__profile {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-left: 19px;
+  margin-right: 19px;
+  }
+
+}
