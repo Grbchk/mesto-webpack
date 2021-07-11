@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портал для путешественников">
+  <meta name="keywords" content="Путешествия, Дневник путешественника">
+  <meta name="author" content="Яндекс Практикум">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto Russia</title>
+</head>
+
+<body class="page">
+  <header class="header page__header">
+    <a href="#"><img class="header__logo" src="./images/logo.svg" alt="логотип сайта"></a>
+  </header>
+  <main class="main" >
+    <section class="profile page__profile" aria-label="профиль">
+      <img class="profile__photo" src="./images/profile-photo.jpg" alt="фото профиля Жак-Ив Кусто">
+      <div class="profile__user">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <button class="profile__button-edit" type="button"></button>
+        <h2 class="profile__subtitle">Исследователь океана</h2>
+      </div>
+      <button class="profile__button-add" type="button"></button>
+    </section>
+    <section class="photo-grid page__photo-grid">
+      <ul class="photo-grid__list">
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Карачаевск</h2>
+            <div class="photo-grid__button-heart photo-grid__button-heart_dark"></div>
+          </div>
+        </li>
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Гора Эльбрус</h2>
+            <div class="photo-grid__button-heart"></div>
+          </div>
+        </li>
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Домбай</h2>
+            <div class="photo-grid__button-heart"></div>
+          </div>
+        </li>
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Гора Эльбрус</h2>
+            <div class="photo-grid__button-heart"></div>
+          </div>
+        </li>
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Домбай</h2>
+            <div class="photo-grid__button-heart"></div>
+          </div>
+        </li>
+        <li class="photo-grid__item">
+          <img class="photo-grid__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
+          <div class="photo-grid__background">
+            <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
+            <div class="photo-grid__button-heart"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer page__footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+  <section class="popup">
+    <div class="popup__container">
+      <form class="popup__form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__item popup__item_el_title">
+        <input type="text" class="popup__item popup__item_el_subtitle">
+        <input type="button" value="Сохранить" class="popup__item popup__item_el_button">
+        <button type="button" class="popup__close-button"></button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
