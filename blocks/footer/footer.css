@@ -1,11 +1,4 @@
 .footer {
   background-color: #000;
-  min-height: 144px;
   max-width: 880px;
-}
-
-@media screen and (max-width: 320px) {
-  .footer {
-    min-height: 98px;
-  }
 }

@@ -1,11 +1,12 @@
 .popup__item_el_button {
-  min-height: 50px;
   background-color: #000;
   cursor: pointer;
   color: white;
   font-size: 18px;
   border: none;
   border-radius: 2px 2px 2px 2px;
+  padding-bottom: 18px;
+  padding-top: 14px;
 }
 
 .popup__item_el_button:hover {

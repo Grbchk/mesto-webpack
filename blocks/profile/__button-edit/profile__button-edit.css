@@ -6,6 +6,7 @@
   min-height: 24px;
   background: url(../../../images/edit-button.svg) no-repeat center center;
   margin-left: 18px;
+  margin-bottom: 10px;
   align-self: end;
   cursor: pointer;
 }
@@ -19,5 +20,6 @@
   .profile__button-edit {
     min-width: 18px;
     min-height: 18px;
+    margin-bottom: 6px;
   }
 }
