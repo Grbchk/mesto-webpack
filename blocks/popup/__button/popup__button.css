@@ -1,14 +1,16 @@
-.popup__item_el_button {
+.popup__button {
   background-color: #000;
   cursor: pointer;
   color: white;
   font-size: 18px;
+  font-weight: normal;
+  line-height: normal;
   border: none;
   border-radius: 2px 2px 2px 2px;
   padding-bottom: 18px;
   padding-top: 14px;
 }
 
-.popup__item_el_button:hover {
+.popup__button:hover {
   background-color: rgba(0, 0, 0, .8);
 }

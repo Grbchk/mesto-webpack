@@ -1,9 +1,9 @@
-.photo-grid__title {
+.photo-card__title {
   margin: 0;
   color: #000;
   font-size: 24px;
   font-weight: 900;
-  line-height: 1;
+  line-height: normal;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

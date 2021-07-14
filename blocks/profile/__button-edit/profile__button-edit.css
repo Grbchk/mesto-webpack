@@ -9,11 +9,11 @@
   margin-bottom: 10px;
   align-self: end;
   cursor: pointer;
+  transition: all .7s;
 }
 
 .profile__button-edit:hover {
   opacity: 60%;
-  transition: opacity .7s;
 }
 
 @media screen and (max-width: 370px) {

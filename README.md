@@ -4,11 +4,13 @@
 [https://grbchk.github.io/mesto-project/](https://grbchk.github.io/mesto-project/)
 ### Используемые технологии
 
-**HTML**
+**HTML5**
 
-**CSS**
+**CSS3**
 
 #### Особенности проекта и применяемые CSS свойства:
+
+> Основывалась на подходе desktop-first
 
 **Grid Layout**
 
