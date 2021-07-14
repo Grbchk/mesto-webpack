@@ -14,7 +14,6 @@
 @media screen and (max-width: 320px) {
   .popup__button {
     font-size: 14px;
-    font-weight: normal;
     line-height: 17px;
   }
 }
