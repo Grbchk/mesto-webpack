@@ -4,11 +4,19 @@
   color: white;
   font-size: 18px;
   font-weight: normal;
-  line-height: normal;
+  line-height: 22px;
   border: none;
   border-radius: 2px 2px 2px 2px;
   padding-bottom: 18px;
   padding-top: 14px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__button {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 17px;
+  }
 }
 
 .popup__button:hover {

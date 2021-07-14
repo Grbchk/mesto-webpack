@@ -8,7 +8,7 @@
   top: -40px; right: -40px;
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 550px) {
   .popup__close-button {
     background: url(../../../images/close-button-size-s.svg) no-repeat center center;
     min-width: 20px;
