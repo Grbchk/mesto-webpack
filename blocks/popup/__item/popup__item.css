@@ -5,10 +5,15 @@
   font-size: 14px;
   font-weight: normal;
   line-height: 17px;
-  text-align: top;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   outline: none;
   margin-bottom: 30px;
+  padding: 0 5px 13px;
+}
+
+.popup__item:focus {
+  outline: 2px solid black;
+  outline-offset: -1px;
 }
 
 .popup__item:last-of-type {
