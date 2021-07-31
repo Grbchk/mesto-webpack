@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портал для путешественников">
+  <meta name="keywords" content="Путешествия, Дневник путешественника">
+  <meta name="author" content="Яндекс Практикум">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto Russia</title>
+</head>
+
+<body class="page">
+  <header class="header page__header">
+    <a href="#"><img class="header__logo" src="./images/logo.svg" alt="логотип сайта"></a>
+  </header>
+  <main class="main" >
+    <section class="profile page__profile" aria-label="профиль">
+      <img class="profile__photo" src="./images/profile-photo.jpg" alt="фото профиля Жак-Ив Кусто">
+      <div class="profile__user">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__button-edit" type="button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+      </div>
+      <button class="profile__button-add" type="button"></button>
+    </section>
+    <section class="photo-grid page__photo-grid">
+      <ul class="photo-grid__list">
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Карачаевск</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Гора Эльбрус</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Домбай</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Гора Эльбрус</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Домбай</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+        <li class="photo-card">
+          <img class="photo-card__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
+          <div class="photo-card__background">
+            <h2 class="photo-card__title">Карачаево-Черкесия</h2>
+            <button type="button" class="photo-card__button-heart"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer page__footer">
+    <p class="footer__copyright">© 2021 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <form class="popup__form" name="popup">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" name="popup-title" class="popup__item" placeholder="Имя">
+        <input type="text" name="popup-subtitle" class="popup__item" placeholder="О себе">
+        <button type="submit" class="popup__button">Сохранить</button>
+        <button type="button" class="popup__close-button"></button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
