@@ -6,6 +6,7 @@
   background: url(../../../images/close-button-size-m.svg) no-repeat center center;
   position: absolute;
   top: -40px; right: -40px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {
