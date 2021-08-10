@@ -1,7 +1,7 @@
 # Учебный проект: Mesto Russia
 Дневник для путешественников
 ### Ссылка на проект
-<https://grbchk.github.io/mesto-project/>
+<https://grbchk.github.io/mesto/>
 ### Используемые технологии
 
 **HTML5**
