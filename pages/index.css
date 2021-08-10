@@ -1,5 +1,6 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
+
 /*Blocks*/
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
@@ -9,6 +10,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/viewing-photo/viewing-photo.css);
+
 /*Elements*/
 @import url(../blocks/page/__header/page__header.css);
 @import url(../blocks/page/__profile/page__profile.css);
@@ -37,6 +39,7 @@
 @import url(../blocks/viewing-photo/__container/viewing-photo__container.css);
 @import url(../blocks/viewing-photo/__image/viewing-photo__image.css);
 @import url(../blocks/viewing-photo/__figcaption/viewing-photo__figcaption.css);
+
 /*Modifiers*/
 @import url(../blocks/photo-card/__button-heart/_active/photo-card__button-heart_active.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
