@@ -4,6 +4,9 @@
   height: 100vh;
   position: fixed;
   top: 0px;
-  display: none;
+  display: flex;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all, .3s ease;
 }

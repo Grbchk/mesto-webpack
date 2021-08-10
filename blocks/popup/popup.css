@@ -2,8 +2,11 @@
   background-color: rgba(0, 0, 0, .5);
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0px;
-  display: none;
-  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all, .3s ease;
 }
