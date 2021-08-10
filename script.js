@@ -1,19 +1,19 @@
 const container = document.querySelector('.page');
 const profileTitle = container.querySelector('.profile__title');
-const profileSubitle = container.querySelector('.profile__subtitle');
+const profileSubtitle = container.querySelector('.profile__subtitle');
 const profileEditButton = container.querySelector('.profile__button-edit');
 const popupProfile = container.querySelector('#add-profile');
 const profileCloseButton = popupProfile.querySelector('.popup__close-button');
 const profileSaveButton = popupProfile.querySelector('#save-button');
 const popupProfileTitle = popupProfile.querySelector('#popup-title');
-const popupProfileSubitle = popupProfile.querySelector('#popup-subtitle');
+const popupProfileSubtitle = popupProfile.querySelector('#popup-subtitle');
 const photoCardList = container.querySelector('.photo-grid__list');
 const photoCardAddButton = container.querySelector('.profile__button-add');
 const popupPhotoСard = container.querySelector('#add-photo-card');
 const photoСardCloseButton = popupPhotoСard.querySelector('.popup__close-button');
 const photoСardSaveButton = popupPhotoСard.querySelector('#save-button');
 const popupPhotoСardTitle = popupPhotoСard.querySelector('#popup-title');
-const popupPhotoСardSubitle = popupPhotoСard.querySelector('#popup-subtitle');
+const popupPhotoСardSubtitle = popupPhotoСard.querySelector('#popup-subtitle');
 const popupViewingPhoto = container.querySelector('.viewing-photo');
 const viewingPhotoCloseButton = popupViewingPhoto.querySelector('.popup__close-button');
 const viewingPhotoLink = popupViewingPhoto.querySelector('.viewing-photo__image');
@@ -46,7 +46,7 @@ const initialCards = [
   },
 ];
 
-function createPhotoCard(cardData) { //cardData = {name: 'Байкал',link: 'htres.jpg'}
+function createPhotoCard(cardData) {
   const photoCardTemplate = document.querySelector('#photo-card-template').content;
   const photoCardElement = photoCardTemplate.querySelector('.photo-card').cloneNode(true);
   photoCardElement.querySelector('.photo-card__image').src = cardData.link;
@@ -73,8 +73,8 @@ function createPhotoCard(cardData) { //cardData = {name: 'Байкал',link: 'h
   return photoCardElement;
 }
 
-function addPhotoCard(cardData, cardContainer) { //cardData = {name: 'Байкал',link: 'htres.jpg'}
-  const card = createPhotoCard(cardData); //cardData = {name: 'Байкал',link: 'htres.jpg'}
+function addPhotoCard(cardData, cardContainer) {
+  const card = createPhotoCard(cardData);
   cardContainer.prepend(card);
 };
 
@@ -82,10 +82,8 @@ initialCards.forEach((arrayItem) => {
   addPhotoCard(arrayItem, photoCardList);
 });
 
-const openPopup = function (popup, title, subtitle) {
+const openPopup = function (popup) {
   popup.classList.add('popup_opened');
-  title.value = '';
-  subtitle.value = '';
 };
 
 const savePopup = (popup) => {
@@ -98,35 +96,34 @@ const closePopup = (popup) => {
 };
 
 profileEditButton.addEventListener('click', () => {
-  const title = popupProfileTitle;
-  const subtitle = popupProfileSubitle;
-  openPopup(popupProfile, title, subtitle);
+  popupProfileTitle.value = '';
+  popupProfileSubtitle.value = '';
+  openPopup(popupProfile);
+});
+
+profileSaveButton.addEventListener('click', () => {
+  profileTitle.textContent = popupProfileTitle.value;
+  profileSubtitle.textContent = popupProfileSubtitle.value;
+  savePopup(popupProfile);
 });
 
 profileCloseButton.addEventListener('click', () => {
   closePopup(popupProfile);
 });
 
-profileSaveButton.addEventListener('click', () => {
-  profileTitle.textContent = popupProfileTitle.value;
-  profileSubitle.textContent = popupProfileSubitle.value;
-  savePopup(popupProfile);
+photoCardAddButton.addEventListener('click', () => {
+  popupPhotoСardTitle.value = '';
+  popupPhotoСardSubtitle.value = '';
+  openPopup(popupPhotoСard);
 });
 
-photoCardAddButton.addEventListener('click', () => {
-  const title = popupPhotoСardTitle;
-  const subtitle = popupPhotoСardSubitle;
-  openPopup(popupPhotoСard, title, subtitle);
+photoСardSaveButton.addEventListener('click', () => {
+  const name = popupPhotoСardTitle.value;
+  const link = popupPhotoСardSubtitle.value;
+  addPhotoCard({name, link}, photoCardList);
+  savePopup(popupPhotoСard);
 });
 
 photoСardCloseButton.addEventListener('click', () => {
   closePopup(popupPhotoСard);
 });
-
-photoСardSaveButton.addEventListener('click', () => {
-  const name = popupPhotoСardTitle.value;
-  const link = popupPhotoСardSubitle.value;
-  addPhotoCard({name, link}, photoCardList);
-  savePopup(popupPhotoСard);
-});
-
