@@ -3,15 +3,15 @@ const profileTitle = container.querySelector('.profile__title');
 const profileSubtitle = container.querySelector('.profile__subtitle');
 const profileEditButton = container.querySelector('.profile__button-edit');
 const popupProfile = container.querySelector('#add-profile');
+const profileForm = popupProfile.querySelector('.popup__form');
 const profileCloseButton = popupProfile.querySelector('.popup__close-button');
-const profileSaveButton = popupProfile.querySelector('#save-button');
 const popupProfileTitle = popupProfile.querySelector('#popup-title');
 const popupProfileSubtitle = popupProfile.querySelector('#popup-subtitle');
 const photoCardList = container.querySelector('.photo-grid__list');
 const photoCardAddButton = container.querySelector('.profile__button-add');
 const popupPhotoСard = container.querySelector('#add-photo-card');
+const photoCardForm = popupPhotoСard.querySelector('.popup__form');
 const photoСardCloseButton = popupPhotoСard.querySelector('.popup__close-button');
-const photoСardSaveButton = popupPhotoСard.querySelector('#save-button');
 const popupPhotoСardTitle = popupPhotoСard.querySelector('#popup-title');
 const popupPhotoСardSubtitle = popupPhotoСard.querySelector('#popup-subtitle');
 const popupViewingPhoto = container.querySelector('.viewing-photo');
@@ -49,7 +49,9 @@ const initialCards = [
 function createPhotoCard(cardData) {
   const photoCardTemplate = document.querySelector('#photo-card-template').content;
   const photoCardElement = photoCardTemplate.querySelector('.photo-card').cloneNode(true);
-  photoCardElement.querySelector('.photo-card__image').src = cardData.link;
+  const cardImage = photoCardElement.querySelector('.photo-card__image');
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
   photoCardElement.querySelector('.photo-card__title').textContent = cardData.name;
   photoCardElement.querySelector('.photo-card__button-heart').addEventListener('click', function (evt) {
     const eventTarget = evt.target;
@@ -59,16 +61,13 @@ function createPhotoCard(cardData) {
     const listItem = photoCardElement.querySelector('.photo-card__button-delete').closest('.photo-card');
     listItem.remove();
   });
-  const cardImage = photoCardElement.querySelector('.photo-card__image');
   cardImage.addEventListener('click', function () {
-    const link = popupViewingPhoto.querySelector('.viewing-photo__image');
+    const photo = popupViewingPhoto.querySelector('.viewing-photo__image');
     const figcaption = popupViewingPhoto.querySelector('.viewing-photo__figcaption');
-    link.src = cardData.link;
+    photo.src = cardData.link;
+    photo.alt = cardData.name;
     figcaption.textContent = cardData.name;
     popupViewingPhoto.classList.add('popup_opened');
-  });
-  viewingPhotoCloseButton.addEventListener('click', () => {
-    closePopup(popupViewingPhoto);
   });
   return photoCardElement;
 }
@@ -86,25 +85,25 @@ const openPopup = function (popup) {
   popup.classList.add('popup_opened');
 };
 
-const savePopup = (popup) => {
-  event.preventDefault();
-  closePopup(popup);
-};
-
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 };
 
+function submitForm(popup) {
+  event.preventDefault();
+  closePopup(popup);
+};
+
 profileEditButton.addEventListener('click', () => {
-  popupProfileTitle.value = '';
-  popupProfileSubtitle.value = '';
+  popupProfileTitle.value = profileTitle.textContent;
+  popupProfileSubtitle.value = profileSubtitle.textContent;
   openPopup(popupProfile);
 });
 
-profileSaveButton.addEventListener('click', () => {
+profileForm.addEventListener('submit', function () {
   profileTitle.textContent = popupProfileTitle.value;
   profileSubtitle.textContent = popupProfileSubtitle.value;
-  savePopup(popupProfile);
+  submitForm(popupProfile);
 });
 
 profileCloseButton.addEventListener('click', () => {
@@ -112,18 +111,21 @@ profileCloseButton.addEventListener('click', () => {
 });
 
 photoCardAddButton.addEventListener('click', () => {
-  popupPhotoСardTitle.value = '';
-  popupPhotoСardSubtitle.value = '';
+  photoCardForm.reset();
   openPopup(popupPhotoСard);
 });
 
-photoСardSaveButton.addEventListener('click', () => {
+photoCardForm.addEventListener('submit', () => {
   const name = popupPhotoСardTitle.value;
   const link = popupPhotoСardSubtitle.value;
   addPhotoCard({name, link}, photoCardList);
-  savePopup(popupPhotoСard);
+  submitForm(popupPhotoСard);
 });
 
 photoСardCloseButton.addEventListener('click', () => {
   closePopup(popupPhotoСard);
+});
+
+viewingPhotoCloseButton.addEventListener('click', () => {
+  closePopup(popupViewingPhoto);
 });
