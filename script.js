@@ -67,7 +67,7 @@ function createPhotoCard(cardData) {
     photo.src = cardData.link;
     photo.alt = cardData.name;
     figcaption.textContent = cardData.name;
-    popupViewingPhoto.classList.add('popup_opened');
+    openPopup(popupViewingPhoto);
   });
   return photoCardElement;
 }
