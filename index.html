@@ -27,64 +27,54 @@
     </section>
     <section class="photo-grid page__photo-grid">
       <ul class="photo-grid__list">
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Карачаевск</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Гора Эльбрус</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Домбай</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-elbrus.jpg" alt="вид на закат у горы эльбрус">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Гора Эльбрус</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-dombai.jpg" alt="пейзаж с осенним лесом на фоне гор">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Домбай</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
-        <li class="photo-card">
-          <img class="photo-card__image" src="./images/main-photo-karachaevsk.jpg" alt="пейзаж с сентинским храмом на фоне гор">
-          <div class="photo-card__background">
-            <h2 class="photo-card__title">Карачаево-Черкесия</h2>
-            <button type="button" class="photo-card__button-heart"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
   <footer class="footer page__footer">
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
-  <div class="popup">
+
+  <div class="popup" id="add-profile">
     <div class="popup__container">
-      <form class="popup__form" name="popup">
+      <form class="popup__form" name="profile-popup">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="popup-title" class="popup__item" placeholder="Имя">
-        <input type="text" name="popup-subtitle" class="popup__item" placeholder="О себе">
-        <button type="submit" class="popup__button">Сохранить</button>
+        <input type="text" id="popup-title" name="profile-popup-title" class="popup__item" placeholder="Имя">
+        <input type="text" id="popup-subtitle" name="profile-popup-subtitle" class="popup__item" placeholder="О себе">
+        <button type="submit" id="save-button" class="popup__button">Сохранить</button>
         <button type="button" class="popup__close-button"></button>
       </form>
     </div>
   </div>
+  <div class="popup" id="add-photo-card">
+    <div class="popup__container">
+      <form class="popup__form" name="photo-card-popup">
+        <h2 class="popup__title">Новое место</h2>
+        <input type="text" id="popup-title" name="photo-card-title" class="popup__item" placeholder="Название">
+        <input type="url" id="popup-subtitle" name="photo-card-subtitle" class="popup__item" pattern="https://.*" placeholder="https://example.com">
+        <button type="submit" id="save-button" class="popup__button">Создать</button>
+        <button type="button" class="popup__close-button"></button>
+      </form>
+    </div>
+  </div>
+  <div class="viewing-photo">
+    <figure class="viewing-photo__container">
+      <img class="viewing-photo__image" src="" alt="пейзаж">
+      <figcaption class="viewing-photo__figcaption"></figcaption>
+      <button type="button" class="popup__close-button"></button>
+    </figure>
+  </div>
+
+  <template id="photo-card-template">
+    <li class="photo-card">
+      <img class="photo-card__image" src="" alt="пейзаж">
+      <button type="button" class="photo-card__button-delete"></button>
+      <div class="photo-card__background">
+        <h2 class="photo-card__title"></h2>
+        <button type="button" class="photo-card__button-heart"></button>
+      </div>
+    </li>
+  </template>
+
+  <script src="./script.js"></script>
 </body>
 </html>
