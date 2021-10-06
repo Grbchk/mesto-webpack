@@ -1,3 +1,5 @@
+import { enableValidation } from './validate.js';
+
 const container = document.querySelector('.page');
 const profileTitle = container.querySelector('.profile__title');
 const profileSubtitle = container.querySelector('.profile__subtitle');
@@ -128,4 +130,14 @@ photoСardCloseButton.addEventListener('click', () => {
 
 viewingPhotoCloseButton.addEventListener('click', () => {
   closePopup(popupViewingPhoto);
+});
+
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'popup__error_visible'
 });

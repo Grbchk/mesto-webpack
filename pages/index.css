@@ -33,6 +33,7 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__item/popup__item.css);
+@import url(../blocks/popup/__span/popup__span.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/viewing-photo/__container/viewing-photo__container.css);
@@ -42,5 +43,8 @@
 /*Modifiers*/
 @import url(../blocks/photo-card/__button-heart/_active/photo-card__button-heart_active.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__item/_type/popup__item_type_error.css);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/__error/popup__error_visible.css);
 
 
