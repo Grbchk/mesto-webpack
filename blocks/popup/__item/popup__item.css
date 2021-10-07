@@ -7,15 +7,6 @@
   line-height: 17px;
   color: #000;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  margin-bottom: 5px;
   padding: 0 0 13px 0;
 }
 
-/* .popup__item:focus {
-  outline: 2px solid black;
-  outline-offset: -1px;
-} */
-
-.popup__item:invalid {
-  color: #C4C4C4;
-}

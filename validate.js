@@ -2,7 +2,8 @@ export const enableValidation = ({...rest}) => {
   formEventListeners(rest);
 };
 
-
+// inputErrorClass: 'popup__item_type_error',
+// errorClass: 'popup__error_visible'
 
 
 //добавляем функцию для показа ошибки
