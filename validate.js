@@ -22,7 +22,7 @@ const hideInputError = (input, errorElement, {...rest}) => {
 // Функция, которая проверяет валидность поля
 const isValid = (form, input, {...rest}) => {
   // Выбираем элемент ошибки на основе уникального класса
-  const errorElement = form.querySelector(`.${input.id}-error`); //(может лэт?)
+  const errorElement = form.querySelector(`.${input.id}-error`);
   if (!input.validity.valid) {
     showInputError(input, errorElement, input.validationMessage, rest); // Если поле не проходит валидацию, покажем ошибку
   } else {
@@ -30,7 +30,7 @@ const isValid = (form, input, {...rest}) => {
   }
 };
 
-//создадим функцию setEventListener для добавления слушателей событий всем полям ввода внутри формы
+//создадим функцию для добавления слушателей событий всем полям ввода внутри формы
 //вместо добавления слушателя на одно поле ввода - formInput.addEventListener('input', isValid)
 const inputEventListeners = (form, {...rest}) => {
   const inputList = Array.from(form.querySelectorAll(rest.inputSelector));  //делаем массив полей формы
@@ -39,7 +39,7 @@ const inputEventListeners = (form, {...rest}) => {
   inputList.forEach((input) => {  //обходим все элементы полученного массива
     input.addEventListener('input', () => {  //каждому полю добавим обработчик события input с коллбеком, вызывающим проверку
       isValid(form, input, rest);
-      toggleButtonState(inputList, button, rest);  //внутри обработчика события input, после вызова isValid, еще раз вызовем toggleButtonState, чтобы сверять состояние кнопки при каждом изменении полей ввода
+      toggleButtonState(inputList, button, rest);  //еще раз вызовем toggleButtonState, чтобы сверять состояние кнопки при каждом изменении полей ввода
     });
   });
 };
@@ -47,7 +47,7 @@ const inputEventListeners = (form, {...rest}) => {
 //создадим функцию, принимающую массив полей, и возвращающую true, если один из инпутов невалиден
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => { //проверка на валидность, если проверяемое поле не валидно, колбэк вернёт true обход массива прекратится
-    return !inputElement.validity.valid; //и вся фунцкция и hasInvalidInput вернёт true
+    return !inputElement.validity.valid; //hasInvalidInput вернёт true
   })
 };
 
@@ -64,9 +64,9 @@ const formEventListeners = ({formSelector, ...rest}) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((form) => {
     form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
+      evt.preventDefault(); //отключает поведение по-умолчанию
     });
-    inputEventListeners(form, rest); //для каждой формы вызовем функцию setEventListeners, передав ей текущую форму
+    inputEventListeners(form, rest);
   });
 };
 

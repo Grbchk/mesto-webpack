@@ -33,7 +33,7 @@ const closePopup = (popup) => {
 };
 
 function submitForm(popup) {
-  event.preventDefault();
+  event.preventDefault(); //сбрасывает поведение по-умолчанию
   closePopup(popup);
 };
 
