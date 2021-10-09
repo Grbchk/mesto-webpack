@@ -1,3 +1,5 @@
+import { hideInputError } from './utils.js';
+
 export const enableValidation = ({...rest}) => {
   formEventListeners(rest);
 };
@@ -12,12 +14,7 @@ const showInputError = (input, errorElement, errorMessage, {...rest}) => {
   errorElement.classList.add(rest.errorClass);
   errorElement.textContent = errorMessage;
 };
-//добавляем функцию для удаления ошибки
-const hideInputError = (input, errorElement, {...rest}) => {
-  input.classList.remove(rest.inputErrorClass);  //скрываем стилизацию подчеркивания
-  errorElement.classList.remove(rest.errorClass); //и текста ошибки
-  errorElement.textContent = ''; //ресет() возможно лучше подойдет. наверное в отд.функцию вынести и вызывать здесь и в закрытии формы
-};
+
 
 // Функция, которая проверяет валидность поля
 const isValid = (form, input, {...rest}) => {

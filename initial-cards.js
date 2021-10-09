@@ -1,5 +1,4 @@
-
-
+import { addPhotoCard } from './card.js';
 
 const initialCards = [
   {
@@ -28,10 +27,8 @@ const initialCards = [
   },
 ];
 
-
-
-
-//можно вынести создание базовых карточек в отдельный файл
-initialCards.forEach((arrayItem) => {   //запускаем массив циклично, создавая каждую карточку функцией addPhotoCard
-  addPhotoCard(arrayItem, photoCardPlace); //photoCardPlace это контейнер в разметке
-});
+export const initialCardsArray = ({...rest}) => {
+  initialCards.forEach((arrayItem) => {   //запускаем массив циклично, создавая каждую карточку функцией addPhotoCard
+    addPhotoCard(arrayItem, rest);
+  });
+}

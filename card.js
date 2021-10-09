@@ -1,123 +1,85 @@
-// функции для работы с карточками проекта Mesto вынесите в файл
-//все что касается работы карточки, в частности функция создания карточки,
-//функция добавления карточки на страницу
+import { openPopup, submitEvent, popupCloseButtonListeners} from './popup.js';
+export { addPhotoCard, addCardButtonListeners, popupPhotoCardListener};
 
-
-
-// //popupForm глобальная переменная?
-// const popupPhotoСard = container.querySelector('#add-photo-card'); //передается в открыть/закрыть попап
-
-
-
-//ОДНА ФУНКЦИЯ - ОДНО ДЕЙСТВИЕ (РАЗНЕСТИ НА МАЛЕНЬКИЕ ФУНКЦИИ, см. validste.js)
-
-const createPhotoCard = (cardData, {...rest}) => {
-  const photoCardTemplate = document.querySelector('#photo-card-template').content;//выбираем темплейт
-  const photoCard = photoCardTemplate.querySelector(rest.cardItem).cloneNode(true); //клонировать всю структуру карточки
-
-  cardEventListeners(photoCard, rest); //слушатель на эту карточку
-  addCardData(photoCard, cardData, rest); //данные этой карточки
-  addViewImageData(photoCard, cardData, rest); //данные для просмотра карточки (не понимаю куда записывается)
-  imageClickListeners(card, rest);  //добавляет слушатели картинкам, по клику на картинку открывается попап из разметки для просмотра картинки
-
-  //передаваемые константы
-{
-  cardItem: '.photo-card', //это все из темплейта
-  cardTitle: '.photo-card__title',
-  cardImage: '.photo-card__image',
-  heartButton: '.photo-card__button-heart',
-  deleteButton: '.photo-card__button-delete',
-  popupViewingPhoto: '.viewing-photo',
-};
-
-  return photoCardElement;
-}
-
-const cardEventListeners = (photoCard, {...rest}) => {
-  const card = photoCard;
-  likeButtonListeners(card, rest); //добавит слушатель на конкретную карточку
-  deleteButtonListeners(card, rest);
-
-}
-
-const likeButtonListeners = (card, {...rest}) => {
-  card.querySelector(rest.heartButton).addEventListener('click', function (evt) {
+const likeButtonListeners = (photoCard, {...rest}) => {
+  photoCard.querySelector(rest.heartButton).addEventListener('click', function (evt) {
     const eventTarget = evt.target; //это чтобы состояние туда-сюда менялось при клике
     eventTarget.classList.toggle('photo-card__button-heart_active');
   });
 }
 
-const deleteButtonListeners = (card, {...rest}) => {
-  card.querySelector(rest.deleteButton).addEventListener('click', function () {  //можно ли сразу слушатель на deleteButton накладывать?
-    const deletedCard = card.querySelector(rest.deleteButton).closest(card);
+const deleteButtonListeners = (photoCard, {...rest}) => {
+  const button = photoCard.querySelector(rest.deleteButton);
+  button.addEventListener('click', function () {  //можно ли сразу слушатель на deleteButton накладывать?
+    const deletedCard = button.closest(rest.cardItem);
     deletedCard.remove(); //при клике на ведерко удалить ближ карточку, переименовать итем в кард
   });
 }
 
-
-const imageClickListeners = (card, {...rest}) => {
-  card.querySelector(rest.cardImage).addEventListener('click', function () {
-    openPopup(popupViewingPhoto); //открывает попап из разметки
-
-    //тут наверное нужна универсальная функция для закрытия по крестику, оверлею и эскейпу
-    //.popup__close-button - этот класс у всех крестиков, на них можно сразу повесить слушатели
-    //что-то типа функции-проверки на три события?
-    viewingPhotoCloseButton.addEventListener('click', () => {
-      //и нужно убрать слушатели с оверлея и эскейпа перед закрытием (или внутри функции закрытия?)
-      //спаать хочу
-      closePopup(popupViewingPhoto);
-    });
+const addCardButtonListeners = () => {
+  const button = document.querySelector('.profile__button-add');
+  const popup = document.querySelector('#add-photo-card');
+  button.addEventListener('click', () => {
+    openPopup(popup);
   });
 }
 
-const addCardData = (photoCard, cardData, {...rest}) => {
-  photoCard.querySelector(rest.cardTitle).textContent = cardData.name;
-  photoCard.querySelector(rest.cardImage).src = cardData.link;
-  photoCard.querySelector(rest.cardImage).alt = cardData.name;
-}
-
-const addViewImageData = (photoCard, cardData, {...rest}) => { //текущая карточка, заголовок и ссылка, первый объект
-    const photo = rest.popupViewingPhoto.querySelector('.viewing-photo__image');
-    const figcaption = rest.popupViewingPhoto.querySelector('.viewing-photo__figcaption');
-    photo.src = cardData.link;
-    photo.alt = cardData.name;
-    figcaption.textContent = cardData.name;
-}
-
-const addPhotoCard = (cardData, cardContainer) => {
-  const card = createPhotoCard(cardData);
-  cardContainer.prepend(card); //добавляем готовую карточку в разметку вперед дочерних элементов
+const cardEventListeners = (photoCard, {...rest}) => {
+  likeButtonListeners(photoCard, rest); //добавит слушатель на конкретную карточку
+  deleteButtonListeners(photoCard, rest);
 };
 
-
-{
-  popupPhotoСard: '#add-photo-card', //это контейнер формы-попапа в разметке
-  cardTitle: '#popup-photo-title ',
-  cardImage: '#popup-photo-subtitle',  //это поля формы, которые заполнят
-  photoCardPlace: '.photo-grid__list', //место в разметке для новых карточек
-
-
+const addCardData = (image, photoCard, cardData, {...rest}) => {
+  photoCard.querySelector(rest.cardTitle).textContent = cardData.name;
+  image.src = cardData.link;
+  image.alt = cardData.name;
 }
 
+const addViewImageData = (popup, cardData, {...rest}) => {
+  const photo = popup.querySelector('.viewing-photo__image');
+  const figcaption = popup.querySelector('.viewing-photo__figcaption');
+  photo.src = cardData.link;
+  photo.alt = cardData.name;
+  figcaption.textContent = cardData.name;
+}
 
-//название функции
-photoCardAddButton.addEventListener('click', () => { //profile__button-add (уникальный селектор) это элемент блока профиль, открывает форму доб картинок
-  popupForm.reset();
-  openPopup(popupPhotoСard);
-});
-//
-const submitListener = ({...rest}) => {
-    rest.popupPhotoСard.addEventListener('submit', () => {
-    const name = cardTitle.value; //берем значения из полей заполненной формы
-    const link = cardImage.value;
-    addPhotoCard({name, link}, photoCardPlace); //photoCardPlace это контейнер в разметке
-    submitForm(popupPhotoСard); //закрываем заполненную форму
+const imageClickListeners = (image, cardData, {...rest}) => {
+  const popup = document.querySelector(rest.popupViewingPhoto);
+  image.addEventListener('click', function () {
+    addViewImageData(popup, cardData, rest);  //добавляем данные в разметку попапа просмотра картинки
+    popupCloseButtonListeners(popup);
+    openPopup(popup); //открывает попап из разметки
   });
 }
 
-//универсальная функция? или добавить слушатели при создании карточки?
-popupCloseButton.addEventListener('click', () => {
-  closePopup(popupPhotoСard);
-});
+//заполняем темплейт (пустую новую карточку)
+const createPhotoCard = (cardData, {...rest}) => {
+  const photoCardTemplate = document.querySelector('#photo-card-template').content;//выбираем темплейт
+  const photoCard = photoCardTemplate.querySelector(rest.cardItem).cloneNode(true); //клонировать всю структуру карточки
+  const image = photoCard.querySelector(rest.cardImage)
+  cardEventListeners(photoCard, rest); //слушатель на эту карточку
+  addCardData(image, photoCard, cardData, rest); //данные этой карточки
+  imageClickListeners(image, cardData, rest);  //добавляет слушатели картинкам, по клику на картинку открывается попап из разметки для просмотра картинки
+  return photoCard;
+}
+
+const addPhotoCard = (cardData, {...rest}) => {
+  const card = createPhotoCard(cardData, rest);
+  document.querySelector(rest.photoCardPlace).prepend(card); //добавляем готовую карточку в разметку вперед дочерних элементов
+};
+
+const popupPhotoCardListener = ({...rest}) => { //вызываем из script.js
+  const popup = document.querySelector(rest.popupPhotoСard);
+  popupCloseButtonListeners(popup);
+  const form = popup.querySelector(rest.photoCardForm);
+  form.addEventListener('submit', () => {
+    const title = document.querySelector(rest.popupTitle)
+    const image = document.querySelector(rest.popupImageLink)
+    const name = title.value; //берем значения из полей заполненной формы
+    const link = image.value;
+    addPhotoCard({name, link}, rest); //photoCardPlace это контейнер в разметке
+    submitEvent(popup); //закрываем заполненную форму
+  });
+}
 
 
