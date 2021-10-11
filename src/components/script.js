@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import { profileSelectors, photoCardSelectors, formSelectors} from './selectors.js';
 import { initialCardsArray } from './initial-cards.js';
 import { enableValidation } from './validate.js';
