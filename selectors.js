@@ -11,17 +11,17 @@ const profileSelectors = {
 };
 
 const photoCardSelectors = {
-  cardItem: '.photo-card', //это все из темплейта
+  cardItem: '.photo-card',
   cardTitle: '.photo-card__title',
   cardImage: '.photo-card__image',
   heartButton: '.photo-card__button-heart',
   deleteButton: '.photo-card__button-delete',
-  popupViewingPhoto: '.viewing-photo', //это из разметки
-  popupPhotoСard: '#add-photo-card', //это контейнер формы-попапа в разметке
-  popupTitle: '#popup-photo-title ', //это поле формы, которое заполнят
-  popupImageLink: '#popup-photo-subtitle', //и это тоже
+  popupViewingPhoto: '.viewing-photo',
+  popupPhotoСard: '#add-photo-card',
+  popupTitle: '#popup-photo-title ',
+  popupImageLink: '#popup-photo-subtitle',
   photoCardForm: '.popup__form',
-  photoCardPlace: '.photo-grid__list', //место в разметке для новых карточек
+  photoCardPlace: '.photo-grid__list',
 }
 
 const formSelectors = {

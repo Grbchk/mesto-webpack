@@ -28,7 +28,7 @@ const initialCards = [
 ];
 
 export const initialCardsArray = ({...rest}) => {
-  initialCards.forEach((arrayItem) => {   //запускаем массив циклично, создавая каждую карточку функцией addPhotoCard
+  initialCards.forEach((arrayItem) => {
     addPhotoCard(arrayItem, rest);
   });
 }

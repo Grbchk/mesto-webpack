@@ -24,8 +24,8 @@ const closePopup = (popup) => {
 };
 
 const submitEvent = (popup) => {
-  event.preventDefault(); //сбрасывает поведение по-умолчанию
-  closePopup(popup); //закрывает попап после нажатия кнопки (события сабмит)
+  event.preventDefault();
+  closePopup(popup);
 };
 
 const popupCloseButtonListeners = (popup) => {

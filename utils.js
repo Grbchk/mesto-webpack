@@ -1,4 +1,3 @@
-//утилитарные функции, которые используются в работе сразу нескольких других функций
 export { resetError, resetButton };
 
 const resetError = (form, {...rest}) => {
@@ -12,7 +11,7 @@ const resetError = (form, {...rest}) => {
 }
 
 const resetButton = (form, {...rest}) => {
-  const button = form.querySelector(rest.submitButtonSelector);  //находим кнопку в разметке
+  const button = form.querySelector(rest.submitButtonSelector);
   const popupProfile = document.querySelector('#add-profile');
   const profileButton = popupProfile.querySelector(rest.submitButtonSelector);
   if (button !== profileButton) {
