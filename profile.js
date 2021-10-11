@@ -8,6 +8,7 @@ export const addProfileListeners = ({...rest}) => {
   const title = document.querySelector(rest.profileTitle);
   const subtitle = document.querySelector(rest.profileSubtitle);
   const editButton = document.querySelector(rest.profileEditButton);
+
   editButton.addEventListener('click', () => {
     popupTitle.value = title.textContent;
     popupSubtitle.value = subtitle.textContent;

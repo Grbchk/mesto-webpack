@@ -1,25 +1,26 @@
+import { resetError, resetButton } from './utils.js';
 import { formSelectors } from './selectors.js';
-import { hideInputError } from './utils.js';
 export { openPopup, closePopup, submitEvent, popupCloseButtonListeners};
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-
-  //установить слушатели еск и оверлея
+  document.addEventListener('keydown', pressEscape);
+  document.addEventListener('mousedown', clickOverlay);
 };
 
 const resetPopup = (popup) => {
   const form = popup.querySelector('.popup__form');
-  const item = form.querySelector('.popup__item');  //
-  const errorElement = form.querySelector(`.${item.id}-error`);
-  hideInputError(item, errorElement, formSelectors);
   form.reset();
+  resetError(form, formSelectors);
+  resetButton(form, formSelectors);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   resetPopup(popup);
-  //снять слушатели с еск и оверлея
+  document.removeEventListener('keydown', pressEscape);
+  document.removeEventListener('mousedown', clickOverlay);
+
 };
 
 const submitEvent = (popup) => {
@@ -31,4 +32,16 @@ const popupCloseButtonListeners = (popup) => {
   popup.querySelector('.popup__close-button').addEventListener('click', () => {
   closePopup(popup);
   });
+}
+
+const pressEscape = () => {
+  if (event.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+const clickOverlay = () => {
+  if (event.target.classList.contains('popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }

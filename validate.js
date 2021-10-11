@@ -1,5 +1,3 @@
-import { hideInputError } from './utils.js';
-
 export const enableValidation = ({...rest}) => {
   formEventListeners(rest);
 };
@@ -15,6 +13,11 @@ const showInputError = (input, errorElement, errorMessage, {...rest}) => {
   errorElement.textContent = errorMessage;
 };
 
+const hideInputError = (input, errorElement, {...rest}) => {
+  input.classList.remove(rest.inputErrorClass);  //скрываем стилизацию подчеркивания
+  errorElement.classList.remove(rest.errorClass); //и текста ошибки
+  errorElement.textContent = '';
+};
 
 // Функция, которая проверяет валидность поля
 const isValid = (form, input, {...rest}) => {
@@ -32,7 +35,11 @@ const isValid = (form, input, {...rest}) => {
 const inputEventListeners = (form, {...rest}) => {
   const inputList = Array.from(form.querySelectorAll(rest.inputSelector));  //делаем массив полей формы
   const button = form.querySelector(rest.submitButtonSelector);  //находим кнопку в разметке
+  const popupProfile = document.querySelector('#add-profile');
+  const profileButton = popupProfile.querySelector(rest.submitButtonSelector);
+  if (button !== profileButton) {
     toggleButtonState(inputList, button, rest);  //вызываем функцию в первый раз, чтобы заблокировать кнопку еще до ввода данных в поля
+  }
   inputList.forEach((input) => {  //обходим все элементы полученного массива
     input.addEventListener('input', () => {  //каждому полю добавим обработчик события input с коллбеком, вызывающим проверку
       isValid(form, input, rest);
@@ -50,8 +57,8 @@ const hasInvalidInput = (inputList) => {
 
 //создадим функцию, активирующую кнопку
 const toggleButtonState = (inputList, button, {...rest}) => {  //принимает массив полей и элемент кнопку
-  if (hasInvalidInput(inputList)) {  //если есть хотя бы один невалидный инпут
-    button.classList.add(rest.inactiveButtonClass); //сделать кнопку неактивной
+  if (hasInvalidInput(inputList)) { //сделать кнопку неактивной
+    button.classList.add(rest.inactiveButtonClass);
   } else {
     button.classList.remove(rest.inactiveButtonClass);
   }
