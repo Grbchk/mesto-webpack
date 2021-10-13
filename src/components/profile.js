@@ -1,5 +1,7 @@
-import { openPopup, handleSubmitEvent, handleCloseButton} from './popup.js';
+import { openPopup, resetPopup, handleSubmitEvent, handleCloseButton} from './popup.js';
 import { handleCardAddButton } from './card.js';
+import { toggleButtonState } from './validate.js';
+import { formSelectors } from './selectors.js';
 
 export const handlePopupEditProfile = ({...rest}) => {
   const popupProfile = document.querySelector(rest.popupProfile);
@@ -10,8 +12,10 @@ export const handlePopupEditProfile = ({...rest}) => {
   const profileSubtitle = document.querySelector(rest.profileSubtitle);
   const editButton = document.querySelector(rest.profileEditButton);
   editButton.addEventListener('click', () => {
+    resetPopup(popupProfile);
     formTitle.value = profileTitle.textContent;
     formSubtitle.value = profileSubtitle.textContent;
+    toggleButtonState(formProfile, formSelectors);
     openPopup(popupProfile);
   });
   formProfile.addEventListener('submit', function () {

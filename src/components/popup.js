@@ -1,6 +1,6 @@
-import { resetError, resetButton } from './utils.js';
+import { resetError} from './utils.js';
 import { formSelectors } from './selectors.js';
-export { openPopup, closePopup, handleSubmitEvent, handleCloseButton};
+export { openPopup, closePopup, resetPopup, handleSubmitEvent, handleCloseButton};
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
@@ -9,17 +9,13 @@ const openPopup = (popup) => {
 };
 
 const resetPopup = (popup) => {
-  if (!popup.classList.contains('viewing-photo')) { //изменить на если есть форма
-    const form = popup.querySelector('.popup__form');
-    form.reset();
-    resetError(form, formSelectors);
-    resetButton(form, formSelectors);
-  }
+  const form = popup.querySelector('.popup__form');
+  form.reset();
+  resetError(form, formSelectors);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  resetPopup(popup);
   document.removeEventListener('keydown', handleEscButton);
   document.removeEventListener('mousedown', handleClickOverlay);
 };

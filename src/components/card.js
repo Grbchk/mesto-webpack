@@ -1,4 +1,6 @@
-import { openPopup, handleSubmitEvent, handleCloseButton} from './popup.js';
+import { openPopup, resetPopup, handleSubmitEvent, handleCloseButton} from './popup.js';
+import { toggleButtonState } from './validate.js';
+import { formSelectors } from './selectors.js';
 export { addPhotoCard, handleCardAddButton, handlePopupAddPhoto};
 
 const addViewImageData = (popup, cardData) => {
@@ -25,9 +27,12 @@ const handleDeleteButton = (photoCard, {...rest}) => {
 }
 
 const handleCardAddButton = () => {
-  const button = document.querySelector('.profile__button-add');
   const popup = document.querySelector('#add-photo-card');
+  const form = popup.querySelector('.popup__form');
+  const button = document.querySelector('.profile__button-add');
   button.addEventListener('click', () => {
+    resetPopup(popup);
+    toggleButtonState(form, formSelectors);
     openPopup(popup);
   });
 }
@@ -42,8 +47,8 @@ const handlePhoto = (popup, cardData, image, {...rest}) => {
 const handlePhotoCard = (popup, photoCard, cardData, image, {...rest}) => {
   handleLikeButton(photoCard, rest);
   handleDeleteButton(photoCard, rest);
-  handleCloseButton(popup);
   handlePhoto(popup, cardData, image, {...rest});
+  handleCloseButton(popup);
 };
 
 const addCardData = (image, photoCard, cardData, {...rest}) => {
@@ -71,13 +76,13 @@ const handlePopupAddPhoto = ({...rest}) => {
   const popup = document.querySelector(rest.popupPhotoСard);
   const form = popup.querySelector(rest.photoCardForm);
   form.addEventListener('submit', () => {
-    const title = document.querySelector(rest.popupTitle)
-    const image = document.querySelector(rest.popupImageLink)
+    const title = form.querySelector(rest.popupTitle);
+    const image = form.querySelector(rest.popupImageLink);
     const name = title.value;
     const link = image.value;
     addPhotoCard({name, link}, rest);
+    handleSubmitEvent(popup);
   });
-  handleSubmitEvent(popup);
   handleCloseButton(popup);
 }
 
