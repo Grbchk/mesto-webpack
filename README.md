@@ -2,7 +2,7 @@
 ## Mesto Russia
 Дневник для путешественников. Реализован на основе четвертого учебного проекта.
 ### Ссылка на проект
-<https://grbchk.github.io/mesto-js/>
+<https://grbchk.github.io/mesto-webpack/>
 ### Используемые технологии
 
 **HTML5**
